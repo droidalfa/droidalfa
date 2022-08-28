@@ -1,24 +1,25 @@
- <svg class="svgwave" xmlns="http://www.w3.org/2000/svg" width="301" height="301" viewBox="0 0 301 301" style="width:auto; height: auto; overflow: visible;">
+ <svg class="svgwave" xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="-50 -50 500 500" style="width:auto; height: auto; overflow: visible;">
    <style>
      html, body {
   background: black;
-  margin: 0 auto;
+
 }
 
 .container {
-  widht: 100%;
+  widht: 50%;
   background: red;
 }
 
 .svgwave {
-  margin-left: calc(50% - 150px);
-  margin-top: 100px;
+  margin-left: calc(50% - 50px);
+  margin-top: 50px;
 }
      
    </style>
+
                 <path id="wavepath" d="M145.5 301.5H13C6.09645 301.5 0.5 295.904 0.5 289V13C0.5 6.09645 6.09644 0.5 13 0.5H289C295.904 0.5 301.5 6.09644 301.5 13V289C301.5 295.904 295.904 301.5 289 301.5H156.5 H13C6.09645 301.5 0.5 295.904 0.5 289V13C0.5 6.09645 6.09644 0.5 13 0.5H289C295.904 0.5 301.5 6.09644 301.5 13V289C301.5 295.904 295.904 301.5 289 301.5H156.5 H13C6.09645 301.5 0.5 295.904 0.5 289V13C0.5 6.09645 6.09644 0.5 13 0.5H289C295.904 0.5 301.5 6.09644 301.5 13V289C301.5 295.904 295.904 301.5 289 301.5H156.5 H13C6.09645 301.5 0.5 295.904 0.5 289V13C0.5 6.09645 6.09644 0.5 13 0.5H289C295.904 0.5 301.5 6.09644 301.5 13V289C301.5 295.904 295.904 301.5 289 301.5H156.5" style="fill: transparent; stroke: transparent; stroke-width: 1px;" ></path>
 
-                <foreignObject x='6' y='6' width='300px' height='300px'>
+                <foreignObject x='6' y='6' width='301px' height='301px'>
                     <div
                     style="width: 282px; height: 282px;
                             border-radius: 8px;
