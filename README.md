@@ -1,3 +1,3 @@
 <p align="center">
-<img src="texts.svg">
+<img src="game.svg">
 </p>
