@@ -1,0 +1,1176 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="600" viewBox="0 0 900 600" style="background:#000814;display:block;">
+  <defs>
+    <!-- Quantum Gradient (coder.svg) -->
+    <linearGradient id="quantumGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f0ff" />
+      <stop offset="25%" stop-color="#ff00f0" />
+      <stop offset="50%" stop-color="#00ffa3" />
+      <stop offset="75%" stop-color="#f0f" />
+      <stop offset="100%" stop-color="#0ff" />
+    </linearGradient>
+    
+    <!-- Android Green Gradient (game2.svg) -->
+    <linearGradient id="androidGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3DDC84" stop-opacity="0.9"/>
+      <stop offset="25%" stop-color="#00f0ff" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#00ffa3" stop-opacity="0.9"/>
+      <stop offset="75%" stop-color="#3DDC84" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#0ff" stop-opacity="0.9"/>
+    </linearGradient>
+
+    <!-- Holographic Grid (both) -->
+    <pattern id="hologrid" patternUnits="userSpaceOnUse" width="40" height="40" patternTransform="rotate(45)">
+      <path d="M0,0 L40,0 L40,40 Z" fill="none" stroke="rgba(0,240,255,0.15)" stroke-width="1.5"/>
+      <animate attributeName="opacity" values="0.1;0.3;0.1" dur="3s" repeatCount="indefinite"/>
+    </pattern>
+    
+    <!-- Binary Data Stream (both) -->
+    <pattern id="binaryStream" patternUnits="userSpaceOnUse" width="40" height="60">
+      <text x="0" y="0" font-family="'Courier New', monospace" font-size="14" fill="rgba(61,220,132,0.25)" transform="rotate(90)">
+        <animate attributeName="y" from="0" to="-60" dur="2.5s" repeatCount="indefinite"/>
+        0101101010110101010101010101010101010101010101010101010101010101
+      </text>
+    </pattern>
+    
+    <!-- Glitch Effect (game2.svg) -->
+    <filter id="quantumGlitch" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="0" result="blur"/>
+      <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" result="r"/>
+      <feOffset in="r" dx="-4" dy="0" result="r1"/>
+      <feOffset in="r" dx="4" dy="0" result="r2"/>
+      <feComposite in="r1" in2="r2" operator="xor" result="glitch"/>
+      <feComposite in="SourceGraphic" in2="glitch" operator="over"/>
+    </filter>
+    
+    <!-- Explosion Effect (game2.svg) -->
+    <filter id="explosionGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur"/>
+      <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
+    </filter>
+    
+    <!-- Code Flow Path (both) -->
+    <path id="codeFlow" d="M50,300 C200,100 400,500 850,300"/>
+    <path id="techOrbit" d="M450,300 a200,150 0 1,1 0.1,0" />
+  </defs>
+
+  <style>
+    /* Combined Animations */
+    @keyframes quantumPulse { 0%, 100% { opacity: 0.7; transform: scale(1); } 50% { opacity: 1; transform: scale(1.15); } }
+    @keyframes hologramWave { 0% { transform: scaleY(1); opacity: 0.3; } 50% { transform: scaleY(1.6); opacity: 0.9; } 100% { transform: scaleY(1); opacity: 0.3; } }
+    @keyframes glitchTyping { 0% { opacity: 0; } 20% { opacity: 1; transform: skew(5deg); } 40% { opacity: 0.8; transform: skew(-5deg); } 60% { opacity: 1; transform: skew(3deg); } 80% { opacity: 0.9; transform: skew(-3deg); } 100% { opacity: 1; transform: skew(0); } }
+    @keyframes cursorBlink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
+    @keyframes androidWave { 0% { transform: rotate(0deg); } 25% { transform: rotate(-20deg); } 50% { transform: rotate(0deg); } 75% { transform: rotate(20deg); } 100% { transform: rotate(0deg); } }
+    @keyframes androidDance { 0% { transform: translate(0, 0) rotate(0deg); } 25% { transform: translate(0, -10) rotate(-10deg); } 50% { transform: translate(0, 0) rotate(0deg); } 75% { transform: translate(0, -10) rotate(10deg); } 100% { transform: translate(0, 0) rotate(0deg); } }
+    @keyframes androidCry { 0% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(20); opacity: 0; } }
+    @keyframes coderGlitch { 0% { opacity: 1; transform: skew(0deg); } 20% { opacity: 0.8; transform: skew(5deg); } 40% { opacity: 0.9; transform: skew(-5deg); } 60% { opacity: 0.7; transform: skew(3deg); } 80% { opacity: 0.8; transform: skew(-3deg); } 100% { opacity: 0; transform: skew(0); } }
+    @keyframes levelTransition { 0% { opacity: 0; transform: scale(0.5); } 50% { opacity: 1; transform: scale(1.2); } 100% { opacity: 0; transform: scale(1); } }
+    @keyframes jetpackFlame { 0% { transform: scaleY(1); opacity: 0.7; } 50% { transform: scaleY(1.5); opacity: 1; } 100% { transform: scaleY(1); opacity: 0.7; } }
+    @keyframes hoopMove { 0% { transform: translateX(0); } 100% { transform: translateX(300); } }
+    @keyframes obstacleMove { 0% { transform: translateY(600); } 100% { transform: translateY(-50); } }
+    @keyframes enemyMove { 0% { transform: translateY(-50); } 100% { transform: translateY(600); } }
+    @keyframes tetrominoFall { 0% { transform: translateY(0); } 100% { transform: translateY(600); } }
+    @keyframes flappyFlap { 0% { transform: translateY(0); } 50% { transform: translateY(-20); } 100% { transform: translateY(0); } }
+
+    /* Combined Styles */
+    .quantum-text {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      fill: url(#quantumGradient);
+      text-transform: uppercase;
+    }
+    .code-particle { font-family: 'Fira Code', monospace; font-size: 12px; fill: #00ffa3; }
+    .hologram-line { stroke: rgba(0, 240, 255, 0.3); stroke-width: 1; stroke-dasharray: 5; }
+    .quantum-node { fill: url(#quantumGradient); animation: quantumPulse 3s infinite, nodePulse 2s infinite; }
+    .player-paddle, .player-car, .player-ship, .player-block, .player-snake, .player-flappy { fill: #3DDC84; stroke: #00f0ff; stroke-width: 2; }
+    .player-arm { transform-origin: -20px 0px; animation: androidWave 2s infinite; }
+    .player-arm-dance, .player-body-dance { animation: androidDance 1s infinite; }
+    .jetpack-flame { fill: #ff5733; opacity: 0.7; animation: jetpackFlame 0.5s infinite; }
+    .brick, .obstacle, .enemy-ship, .snake-bit, .pillar { fill: #ff00f0; stroke: #f0f; stroke-width: 1; }
+    .hoop { fill: none; stroke: url(#androidGradient); stroke-width: 5; }
+    .ball, .laser, .tetromino { fill: #3DDC84; }
+    .explosion { fill: #ff00f0; filter: url(#explosionGlow); animation: explosion 0.5s ease-out forwards; }
+    .coder-glitch { font-family: 'Courier New', monospace; font-size: 16px; fill: url(#androidGradient); filter: url(#quantumGlitch); animation: coderGlitch 0.8s ease-out forwards; }
+    .tear { fill: #00f0ff; animation: androidCry 1s ease-out forwards; }
+    .reference-line { stroke: rgba(61,220,132,0.5); stroke-width: 2; stroke-dasharray: 5; }
+    .score-text { font-family: 'Courier New', monospace; font-size: 20px; fill: #3DDC84; }
+    .lives-text { font-family: 'Courier New', monospace; font-size: 20px; fill: #00ffa3; }
+    .game-over-text, .win-text, .level-text { font-family: 'Courier New', monospace; font-size: 40px; fill: url(#androidGradient); text-anchor: middle; filter: url(#quantumGlitch); }
+    .start-text { font-family: 'Courier New', monospace; font-size: 30px; fill: url(#androidGradient); text-anchor: middle; filter: url(#quantumGlitch); animation: glitchTyping 2s infinite; }
+    .restart-button { cursor: pointer; fill: rgba(61,220,132,0.2); stroke: url(#androidGradient); stroke-width: 2; pointer-events: all; }
+    .restart-button:hover { fill: rgba(61,220,132,0.4); }
+    .star { fill: #ffffff; opacity: 0.5; }
+    .cursor { fill: #3DDC84; animation: cursorBlink 1s infinite; }
+  </style>
+
+  <!-- Starfield Background (game2.svg) -->
+  <g id="stars">
+    <circle cx="50" cy="50" r="2" class="star"/>
+    <circle cx="150" cy="100" r="1.5" class="star"/>
+    <circle cx="250" cy="200" r="2" class="star"/>
+    <circle cx="350" cy="150" r="1" class="star"/>
+    <circle cx="450" cy="250" r="2" class="star"/>
+    <circle cx="550" cy="50" r="1.5" class="star"/>
+    <circle cx="650" cy="300" r="2" class="star"/>
+    <circle cx="750" cy="100" r="1" class="star"/>
+    <circle cx="850" cy="200" r="1.5" class="star"/>
+  </g>
+
+  <!-- Quantum Background -->
+  <rect width="900" height="600" fill="url(#hologrid)" opacity="0.3"/>
+  <rect width="900" height="600" fill="url(#binaryStream)" opacity="0.15"/>
+
+  <!-- Holographic Grid -->
+  <line x1="0" y1="100" x2="900" y2="100" class="hologram-line" style="animation-delay: 0s;"/>
+  <line x1="0" y1="200" x2="900" y2="200" class="hologram-line" style="animation-delay: 0.5s;"/>
+  <line x1="0" y1="300" x2="900" y2="300" class="hologram-line" style="animation-delay: 1s;"/>
+  <line x1="0" y1="400" x2="900" y2="400" class="hologram-line" style="animation-delay: 1.5s;"/>
+  <line x1="0" y1="500" x2="900" y2="500" class="hologram-line" style="animation-delay: 2s;"/>
+
+  <!-- Quantum Core (coder.svg) -->
+  <circle cx="450" cy="300" r="120" fill="none" stroke="url(#quantumGradient)" stroke-width="4" stroke-dasharray="1000" stroke-dashoffset="1000">
+    <animate attributeName="stroke-dashoffset" from="1000" to="0" dur="5s" repeatCount="indefinite" />
+  </circle>
+
+  <!-- Floating Code Particles (coder.svg) -->
+  <text x="100" y="150" class="code-particle" style="--tx:-50px; --ty:-50px;">
+    <animate attributeName="opacity" values="0;1;0" dur="3s" begin="0s" repeatCount="indefinite" />
+    <animateMotion path="M0,0 Q50,-50 100,0" dur="5s" repeatCount="indefinite" />
+    function()
+  </text>
+  <text x="800" y="400" class="code-particle" style="--tx:50px; --ty:50px;">
+    <animate attributeName="opacity" values="0;1;0" dur="4s" begin="1s" repeatCount="indefinite" />
+    <animateMotion path="M0,0 Q-50,50 -100,0" dur="6s" repeatCount="indefinite" />
+    { code(); }
+  </text>
+
+  <!-- Tech Orbit (coder.svg) -->
+  <g>
+    <text x="450" y="150" class="quantum-text" font-size="18" text-anchor="middle">
+      <animateMotion path="M450,300 a150,100 0 1,1 0.1,0" dur="12s" repeatCount="indefinite" />
+      ANDROID DEV
+    </text>
+    <text x="450" y="150" class="quantum-text" font-size="18" text-anchor="middle">
+      <animateMotion path="M450,300 a180,120 0 1,0 0.1,0" dur="15s" repeatCount="indefinite" />
+      KOTLIN
+    </text>
+    <text x="450" y="150" class="quantum-text" font-size="18" text-anchor="middle">
+      <animateMotion path="M450,300 a120,80 0 1,1 0.1,0" dur="10s" repeatCount="indefinite" />
+      FLUTTER
+    </text>
+  </g>
+
+  <!-- Quantum Nodes (coder.svg) -->
+  <circle cx="300" cy="200" r="10" class="quantum-node">
+    <animate attributeName="cx" values="300;320;300;280;300" dur="7s" repeatCount="indefinite" />
+    <animate attributeName="cy" values="200;220;200;180;200" dur="5s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="600" cy="400" r="10" class="quantum-node">
+    <animate attributeName="cx" values="600;620;600;580;600" dur="8s" repeatCount="indefinite" />
+    <animate attributeName="cy" values="400;420;400;380;400" dur="6s" repeatCount="indefinite" />
+  </circle>
+
+  <!-- Central Hologram (coder.svg) -->
+  <ellipse cx="450" cy="300" rx="200" ry="50" fill="rgba(0,240,255,0.1)" stroke="url(#quantumGradient)" stroke-width="2">
+    <animate attributeName="rx" values="200;220;200;180;200" dur="8s" repeatCount="indefinite" />
+    <animate attributeName="ry" values="50;70;50;30;50" dur="5s" repeatCount="indefinite" />
+    <animate attributeName="opacity" values="0.1;0.3;0.1" dur="4s" repeatCount="indefinite" />
+  </ellipse>
+
+  <!-- Main Title (coder.svg) -->
+  <text x="450" y="100" class="quantum-text" font-size="48" text-anchor="middle" filter="url(#quantumGlitch)">
+    <animate attributeName="opacity" values="0.7;1;0.7" dur="3s" repeatCount="indefinite" />
+    Coder1448
+  </text>
+
+  <!-- Interactive Code Flow (both) -->
+  <text x="50" y="0" class="quantum-text" font-size="16">
+    <textPath href="#codeFlow" startOffset="0%">
+      <animate attributeName="startOffset" from="0%" to="100%" dur="20s" repeatCount="indefinite" />
+      >_ Android Development • Kotlin • Flutter • Java • C++ • Reverse Engineering • Machine Learning • AI • Blockchain • Cybersecurity
+    </textPath>
+  </text>
+
+  <!-- Binary Clock (coder.svg) -->
+  <rect x="750" y="30" width="120" height="40" rx="5" fill="rgba(0,20,40,0.7)" stroke="url(#quantumGradient)" stroke-width="1" />
+  <text x="810" y="55" class="quantum-text" font-size="14" text-anchor="middle">
+    <animate attributeName="text" values="
+      1010:1100;1010:1101;1010:1110;1010:1111;1011:0000;
+      1011:0001;1011:0010;1011:0011;1011:0100;1011:0101;
+      1011:0110;1011:0111;1011:1000;1011:1001;1011:1010;
+      1011:1011;1011:1100;1011:1101;1011:1110;1011:1111;
+      1100:0000" dur="60s" repeatCount="indefinite" />
+  </text>
+
+  <!-- Quantum Signature (coder.svg) -->
+  <text x="450" y="550" class="quantum-text" font-size="14" text-anchor="middle" opacity="0.7">
+    <animate attributeName="fill" values="#00f0ff;#ff00f0;#00ffa3;#f0f;#0ff" dur="10s" repeatCount="indefinite" />
+    SYSTEM_ACTIVE • DEVELOPER_MODE • CREATIVE_CODING • GITHUB_READY
+  </text>
+
+  <!-- Player (game2.svg) -->
+  <g id="player" transform="translate(450, 500) scale(0.3)">
+    <g id="androidBase">
+      <rect x="-40" y="0" width="80" height="100" rx="10" class="player-paddle player-body-dance"/>
+      <rect x="-40" y="-50" width="80" height="50" rx="25" class="player-paddle"/>
+      <path d="M-20,-50 L-30,-70" stroke="#00f0ff" stroke-width="4"/>
+      <path d="M20,-50 L30,-70" stroke="#00f0ff" stroke-width="4"/>
+      <rect x="-30" y="100" width="20" height="40" rx="5" class="player-paddle"/>
+      <rect x="10" y="100" width="20" height="40" rx="5" class="player-paddle"/>
+      <rect x="-60" y="0" width="20" height="40" rx="5" class="player-paddle player-arm-dance"/>
+      <rect x="40" y="0" width="20" height="40" rx="5" class="player-paddle player-arm player-arm-dance"/>
+      <circle cx="-15" cy="-25" r="5" fill="#ffffff"/>
+      <circle cx="15" cy="-25" r="5" fill="#ffffff"/>
+      <circle cx="-15" cy="-10" r="5" class="tear" visibility="hidden"/>
+      <circle cx="15" cy="-10" r="5" class="tear" visibility="hidden"/>
+    </g>
+    <path id="jetpack" d="M-40,100 L-50,120 L-30,120 Z" class="jetpack-flame" visibility="hidden"/>
+    <g id="car" visibility="hidden">
+      <rect x="-60" y="0" width="120" height="80" rx="10" class="player-car"/>
+      <circle cx="-30" cy="80" r="15" class="player-car"/>
+      <circle cx="30" cy="80" r="15" class="player-car"/>
+      <rect x="-40" y="-50" width="80" height="50" rx="25" class="player-car"/>
+    </g>
+    <g id="spaceship" visibility="hidden">
+      <rect x="-40" y="0" width="80" height="100" rx="10" class="player-ship"/>
+      <rect x="-80" y="-20" width="20" height="10" class="player-ship"/>
+      <rect x="60" y="-20" width="20" height="10" class="player-ship"/>
+      <rect x="-40" y="-50" width="80" height="50" rx="25" class="player-ship"/>
+    </g>
+    <g id="tetromino" visibility="hidden">
+      <rect x="-20" y="-60" width="40" height="40" class="player-block"/>
+      <rect x="-20" y="-20" width="40" height="40" class="player-block"/>
+      <rect x="-20" y="20" width="40" height="40" class="player-block"/>
+      <rect x="20" y="20" width="40" height="40" class="player-block"/>
+    </g>
+    <g id="snake" visibility="hidden">
+      <rect x="-20" y="0" width="40" height="40" class="player-snake"/>
+    </g>
+    <g id="flappy" visibility="hidden">
+      <rect x="-40" y="0" width="80" height="100" rx="10" class="player-flappy"/>
+      <rect x="-40" y="-50" width="80" height="50" rx="25" class="player-flappy"/>
+      <path d="M-40,100 L-50,120 L-30,120 Z" class="jetpack-flame"/>
+    </g>
+  </g>
+
+  <!-- Ball (game2.svg) -->
+  <circle id="ball" cx="450" cy="480" r="10" class="ball" visibility="hidden"/>
+
+  <!-- Reference Line (game2.svg) -->
+  <line id="referenceLine" x1="450" y1="500" x2="450" y2="100" class="reference-line" visibility="hidden"/>
+
+  <!-- Hoop (game2.svg) -->
+  <circle id="hoop" cx="450" cy="100" r="30" class="hoop" visibility="hidden">
+    <animateTransform id="hoopMove" attributeName="transform" type="translate" from="0,0" to="300,0" dur="3s" repeatCount="indefinite" additive="sum"/>
+  </circle>
+
+  <!-- Bricks (game2.svg) -->
+  <g id="bricks">
+    <rect x="50" y="50" width="80" height="30" class="brick" id="brick0"/>
+    <rect x="135" y="50" width="80" height="30" class="brick" id="brick1"/>
+    <rect x="220" y="50" width="80" height="30" class="brick" id="brick2"/>
+    <rect x="305" y="50" width="80" height="30" class="brick" id="brick3"/>
+    <rect x="390" y="50" width="80" height="30" class="brick" id="brick4"/>
+    <rect x="475" y="50" width="80" height="30" class="brick" id="brick5"/>
+    <rect x="560" y="50" width="80" height="30" class="brick" id="brick6"/>
+    <rect x="645" y="50" width="80" height="30" class="brick" id="brick7"/>
+    <rect x="730" y="50" width="80" height="30" class="brick" id="brick8"/>
+    <rect x="815" y="50" width="80" height="30" class="brick" id="brick9"/>
+    <rect x="50" y="85" width="80" height="30" class="brick" id="brick10"/>
+    <rect x="135" y="85" width="80" height="30" class="brick" id="brick11"/>
+    <rect x="220" y="85" width="80" height="30" class="brick" id="brick12"/>
+    <rect x="305" y="85" width="80" height="30" class="brick" id="brick13"/>
+    <rect x="390" y="85" width="80" height="30" class="brick" id="brick14"/>
+    <rect x="475" y="85" width="80" height="30" class="brick" id="brick15"/>
+    <rect x="560" y="85" width="80" height="30" class="brick" id="brick16"/>
+    <rect x="645" y="85" width="80" height="30" class="brick" id="brick17"/>
+    <rect x="730" y="85" width="80" height="30" class="brick" id="brick18"/>
+    <rect x="815" y="85" width="80" height="30" class="brick" id="brick19"/>
+    <rect x="50" y="120" width="80" height="30" class="brick" id="brick20"/>
+    <rect x="135" y="120" width="80" height="30" class="brick" id="brick21"/>
+    <rect x="220" y="120" width="80" height="30" class="brick" id="brick22"/>
+    <rect x="305" y="120" width="80" height="30" class="brick" id="brick23"/>
+    <rect x="390" y="120" width="80" height="30" class="brick" id="brick24"/>
+    <rect x="475" y="120" width="80" height="30" class="brick" id="brick25"/>
+    <rect x="560" y="120" width="80" height="30" class="brick" id="brick26"/>
+    <rect x="645" y="120" width="80" height="30" class="brick" id="brick27"/>
+    <rect x="730" y="120" width="80" height="30" class="brick" id="brick28"/>
+    <rect x="815" y="120" width="80" height="30" class="brick" id="brick29"/>
+  </g>
+
+  <!-- Obstacles (game2.svg) -->
+  <g id="obstacles"></g>
+
+  <!-- Enemies and Lasers (game2.svg) -->
+  <g id="enemies"></g>
+  <g id="lasers"></g>
+
+  <!-- Tetris Grid (game2.svg) -->
+  <g id="tetrisGrid"></g>
+
+  <!-- Snake Bits (game2.svg) -->
+  <g id="snakeBits"></g>
+
+  <!-- Pillars (game2.svg) -->
+  <g id="pillars"></g>
+
+  <!-- Score and Lives Display (game2.svg) -->
+  <text x="20" y="40" id="scoreText" class="score-text">Score: 0</text>
+  <text x="20" y="70" id="livesText" class="lives-text">Lives: 3</text>
+  <text x="750" y="40" id="levelText" class="score-text">Level: 1</text>
+
+  <!-- Start Screen (game2.svg) -->
+  <g id="startScreen">
+    <rect x="300" y="200" width="300" height="200" fill="rgba(0,20,40,0.8)" stroke="url(#androidGradient)" stroke-width="2"/>
+    <text x="450" y="300" id="startText1" class="start-text">Press SPACE or TAP to Start</text>
+    <text x="450" y="340" id="startText2" class="start-text">Move with MOUSE or TOUCH</text>
+  </g>
+
+  <!-- Game Over Screen (game2.svg) -->
+  <g id="gameOver" visibility="hidden">
+    <rect x="300" y="200" width="300" height="200" fill="rgba(0,20,40,0.8)" stroke="url(#androidGradient)" stroke-width="2"/>
+    <text x="450" y="300" class="game-over-text">GAME OVER</text>
+    <g id="restartButton" class="restart-button">
+      <rect x="400" y="320" width="100" height="40" rx="5"/>
+      <text x="450" y="345" class="score-text" text-anchor="middle">Restart</text>
+    </g>
+  </g>
+
+  <!-- Win Screen (game2.svg) -->
+  <g id="winScreen" visibility="hidden">
+    <rect x="300" y="200" width="300" height="200" fill="rgba(0,20,40,0.8)" stroke="url(#androidGradient)" stroke-width="2"/>
+    <text x="450" y="300" class="win-text">LEVEL CLEARED</text>
+    <g id="nextLevelButton" class="restart-button">
+      <rect x="400" y="320" width="100" height="40" rx="5"/>
+      <text x="450" y="345" class="score-text" text-anchor="middle">Next Level</text>
+    </g>
+  </g>
+
+  <!-- Level Transition Screen (game2.svg) -->
+  <g id="levelTransition" visibility="hidden">
+    <rect x="300" y="200" width="300" height="200" fill="rgba(0,20,40,0.8)" stroke="url(#androidGradient)" stroke-width="2"/>
+    <text x="450" y="300" id="transitionText" class="level-text">LEVEL 2</text>
+  </g>
+
+  <script>
+    <![CDATA[
+      // Game State
+      let score = 0;
+      let lives = 3;
+      let currentLevel = 1;
+      let gameOver = false;
+      let gameStarted = false;
+      let playerX = 450;
+      let playerY = 500;
+      let ballX = 450;
+      let ballY = 480;
+      let ballDX = 0;
+      let ballDY = 0;
+      let ballSpeed = 5;
+      let hoopX = 450;
+      let hoopScore = 0;
+      let obstacleY = 600;
+      let enemyCount = 0;
+      let linesCleared = 0;
+      let snakeLength = 1;
+      let snakeDirection = 'right';
+      let pillarsPassed = 0;
+      let targetX = 450;
+      let tetromino = null;
+      let tetrominoX = 450;
+      let tetrominoY = 0;
+      let tetrominoRotation = 0;
+      let snakeBits = [{ x: 450, y: 500 }];
+      let bitX = 0;
+      let bitY = 0;
+      const svg = document.querySelector('svg');
+      const player = document.getElementById('player');
+      const ball = document.getElementById('ball');
+      const hoop = document.getElementById('hoop');
+      const referenceLine = document.getElementById('referenceLine');
+      const obstacles = document.getElementById('obstacles');
+      const enemies = document.getElementById('enemies');
+      const lasers = document.getElementById('lasers');
+      const tetrisGrid = document.getElementById('tetrisGrid');
+      const snakeBitsGroup = document.getElementById('snakeBits');
+      const pillars = document.getElementById('pillars');
+      const scoreText = document.getElementById('scoreText');
+      const livesText = document.getElementById('livesText');
+      const levelText = document.getElementById('levelText');
+      const startScreen = document.getElementById('startScreen');
+      const startText1 = document.getElementById('startText1');
+      const startText2 = document.getElementById('startText2');
+      const gameOverScreen = document.getElementById('gameOver');
+      const winScreen = document.getElementById('winScreen');
+      const levelTransition = document.getElementById('levelTransition');
+      const transitionText = document.getElementById('transitionText');
+      const restartButton = document.getElementById('restartButton');
+      const nextLevelButton = document.getElementById('nextLevelButton');
+      const bricks = Array.from(document.querySelectorAll('.brick'));
+      const androidBase = document.getElementById('androidBase');
+      const jetpack = document.getElementById('jetpack');
+      const car = document.getElementById('car');
+      const spaceship = document.getElementById('spaceship');
+      const tetrominoGroup = document.getElementById('tetromino');
+      const snake = document.getElementById('snake');
+      const flappy = document.getElementById('flappy');
+      const tears = player.querySelectorAll('.tear');
+
+      // Tetromino Shapes
+      const tetrominoes = [
+        [[-20,-60,40,40],[-20,-20,40,40],[-20,20,40,40],[20,20,40,40]], // L
+        [[-60,-20,40,40],[-20,-20,40,40],[20,-20,40,40],[60,-20,40,40]], // I
+        [[-20,-20,40,40],[20,-20,40,40],[-20,20,40,40],[20,20,40,40]], // O
+        [[-20,-20,40,40],[-20,20,40,40],[20,-20,40,40],[0,-60,40,40]] // T
+      ];
+
+      // Input Handling
+      let mouseX = 450;
+      let touchStartX = 0;
+      let touchStartY = 0;
+      let lastSwipeDirection = null;
+
+      svg.addEventListener('mousemove', (e) => {
+        const rect = svg.getBoundingClientRect();
+        mouseX = (e.clientX - rect.left) * (900 / rect.width);
+        if (currentLevel === 1 || currentLevel === 2 || currentLevel === 4 || currentLevel === 5 || currentLevel === 7) {
+          playerX = mouseX;
+          if (playerX < 50) playerX = 50;
+          if (playerX > 850) playerX = 850;
+          player.setAttribute('transform', `translate(${playerX}, ${currentLevel === 7 ? playerY : 500}) scale(0.3)`);
+          if (!gameStarted && currentLevel === 1) {
+            ballX = playerX;
+            ball.setAttribute('cx', ballX);
+          }
+          if (currentLevel === 2 && gameStarted) {
+            referenceLine.setAttribute('x1', playerX);
+            referenceLine.setAttribute('x2', mouseX);
+          }
+        }
+      });
+
+      svg.addEventListener('touchmove', (e) => {
+        e.preventDefault();
+        const rect = svg.getBoundingClientRect();
+        const touch = e.touches[0];
+        mouseX = (touch.clientX - rect.left) * (900 / rect.width);
+        const touchY = (touch.clientY - rect.top) * (600 / rect.height);
+        if (currentLevel === 3 || currentLevel === 6) {
+          const dx = touch.clientX - touchStartX;
+          if (Math.abs(dx) > 50) {
+            lastSwipeDirection = dx > 0 ? 'right' : 'left';
+            touchStartX = touch.clientX;
+          }
+        } else if (currentLevel === 5) {
+          tetrominoX = Math.round(mouseX / 40) * 40;
+          if (tetrominoX < 250) tetrominoX = 250;
+          if (tetrominoX > 650) tetrominoX = 650;
+          if (tetromino) tetromino.setAttribute('transform', `translate(${tetrominoX}, ${tetrominoY}) scale(0.3)`);
+        } else {
+          playerX = mouseX;
+          if (playerX < 50) playerX = 50;
+          if (playerX > 850) playerX = 850;
+          player.setAttribute('transform', `translate(${playerX}, ${currentLevel === 7 ? playerY : 500}) scale(0.3)`);
+          if (!gameStarted && currentLevel === 1) {
+            ballX = playerX;
+            ball.setAttribute('cx', ballX);
+          }
+          if (currentLevel === 2 && gameStarted) {
+            referenceLine.setAttribute('x1', playerX);
+            referenceLine.setAttribute('x2', mouseX);
+          }
+        }
+      }, { passive: false });
+
+      svg.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        const rect = svg.getBoundingClientRect();
+        const touch = e.touches[0];
+        touchStartX = touch.clientX;
+        touchStartY = (touch.clientY - rect.top) * (600 / rect.height);
+        if (!gameStarted && !gameOver) {
+          gameStarted = true;
+          startScreen.setAttribute('visibility', 'hidden');
+          if (currentLevel === 1) {
+            ball.setAttribute('visibility', 'visible');
+            ballDX = (Math.random() - 0.5) * 4;
+            ballDY = -ballSpeed;
+          } else if (currentLevel === 2) {
+            ball.setAttribute('visibility', 'visible');
+            referenceLine.setAttribute('visibility', 'visible');
+            targetX = mouseX;
+            ballDX = (targetX - playerX) / 50;
+            ballDY = -10;
+          } else if (currentLevel === 4) {
+            fireLaser();
+          } else if (currentLevel === 5) {
+            spawnTetromino();
+          } else if (currentLevel === 7) {
+            playerDY = -10;
+          }
+        } else if (currentLevel === 2) {
+          targetX = mouseX;
+          ballDX = (targetX - playerX) / 50;
+          ballDY = -10;
+          ball.setAttribute('visibility', 'visible');
+        } else if (currentLevel === 4) {
+          fireLaser();
+        } else if (currentLevel === 5) {
+          tetrominoRotation = (tetrominoRotation + 90) % 360;
+          if (tetromino) tetromino.setAttribute('transform', `translate(${tetrominoX}, ${tetrominoY}) scale(0.3) rotate(${tetrominoRotation})`);
+        } else if (currentLevel === 7) {
+          playerDY = -10;
+        }
+      }, { passive: false });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.code === 'Space' && !gameOver) {
+          if (!gameStarted) {
+            gameStarted = true;
+            startScreen.setAttribute('visibility', 'hidden');
+            if (currentLevel === 1) {
+              ball.setAttribute('visibility', 'visible');
+              ballDX = (Math.random() - 0.5) * 4;
+              ballDY = -ballSpeed;
+            } else if (currentLevel === 2) {
+              ball.setAttribute('visibility', 'visible');
+              referenceLine.setAttribute('visibility', 'visible');
+              targetX = mouseX;
+              ballDX = (targetX - playerX) / 50;
+              ballDY = -10;
+            } else if (currentLevel === 4) {
+              fireLaser();
+            } else if (currentLevel === 5) {
+              spawnTetromino();
+            } else if (currentLevel === 7) {
+              playerDY = -10;
+            }
+          } else if (currentLevel === 2) {
+            targetX = mouseX;
+            ballDX = (targetX - playerX) / 50;
+            ballDY = -10;
+            ball.setAttribute('visibility', 'visible');
+          } else if (currentLevel === 4) {
+            fireLaser();
+          } else if (currentLevel === 5) {
+            tetrominoRotation = (tetrominoRotation + 90) % 360;
+            if (tetromino) tetromino.setAttribute('transform', `translate(${tetrominoX}, ${tetrominoY}) scale(0.3) rotate(${tetrominoRotation})`);
+          } else if (currentLevel === 7) {
+            playerDY = -10;
+          }
+        } else if (currentLevel === 3 || currentLevel === 6) {
+          if (e.key === 'ArrowLeft') lastSwipeDirection = 'left';
+          else if (e.key === 'ArrowRight') lastSwipeDirection = 'right';
+          else if (e.key === 'ArrowUp' && currentLevel === 6) lastSwipeDirection = 'up';
+          else if (e.key === 'ArrowDown' && currentLevel === 6) lastSwipeDirection = 'down';
+        }
+      });
+
+      // Create Explosion
+      function createExplosion(x, y) {
+        const explosionId = `explosion${Math.random()}`;
+        const explosion = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        explosion.setAttribute('id', explosionId);
+        explosion.setAttribute('cx', x);
+        explosion.setAttribute('cy', y);
+        explosion.setAttribute('r', 10);
+        explosion.setAttribute('class', 'explosion');
+        svg.appendChild(explosion);
+        if (currentLevel === 1) {
+          const coderText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+          coderText.setAttribute('x', x);
+          coderText.setAttribute('y', y);
+          coderText.setAttribute('class', 'coder-glitch');
+          coderText.textContent = 'Coder1448';
+          svg.appendChild(coderText);
+          setTimeout(() => coderText.remove(), 800);
+        }
+        setTimeout(() => explosion.remove(), 500);
+      }
+
+      // Android Dance Animation
+      function startDanceAnimation() {
+        const body = player.querySelector('.player-body-dance');
+        const arms = player.querySelectorAll('.player-arm-dance');
+        if (body) body.classList.add('player-body-dance');
+        if (arms) arms.forEach(arm => arm.classList.add('player-arm-dance'));
+        setTimeout(() => {
+          if (body) body.classList.remove('player-body-dance');
+          if (arms) arms.forEach(arm => arm.classList.remove('player-arm-dance'));
+        }, 2000);
+      }
+
+      // Android Cry Animation
+      function startCryAnimation() {
+        tears.forEach(tear => tear.setAttribute('visibility', 'visible'));
+        const mouth = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        mouth.setAttribute('d', 'M-20,-10 Q0,-20 20,-10');
+        mouth.setAttribute('stroke', '#ffffff');
+        mouth.setAttribute('stroke-width', '4');
+        mouth.setAttribute('fill', 'none');
+        player.appendChild(mouth);
+        setTimeout(() => {
+          tears.forEach(tear => tear.setAttribute('visibility', 'hidden'));
+          mouth.remove();
+        }, 2000);
+      }
+
+      // Level Transition
+      function showLevelTransition(nextLevel) {
+        transitionText.textContent = `LEVEL ${nextLevel}`;
+        levelTransition.setAttribute('visibility', 'visible');
+        setTimeout(() => {
+          levelTransition.setAttribute('visibility', 'hidden');
+          startLevel(nextLevel);
+        }, 2000);
+      }
+
+      // Reset Ball
+      function resetBall() {
+        ballX = playerX;
+        ballY = 480;
+        ballDX = 0;
+        ballDY = 0;
+        ball.setAttribute('cx', ballX);
+        ball.setAttribute('cy', ballY);
+        ball.setAttribute('visibility', currentLevel === 1 ? 'visible' : 'hidden');
+        referenceLine.setAttribute('visibility', currentLevel === 2 ? 'visible' : 'hidden');
+        gameStarted = false;
+        startScreen.setAttribute('visibility', 'visible');
+      }
+
+      // Spawn Tetromino
+      function spawnTetromino() {
+        if (tetromino) tetromino.remove();
+        tetromino = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+        tetromino.setAttribute('id', 'activeTetromino');
+        const shape = tetrominoes[Math.floor(Math.random() * tetrominoes.length)];
+        shape.forEach(([x, y, w, h]) => {
+          const block = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+          block.setAttribute('x', x);
+          block.setAttribute('y', y);
+          block.setAttribute('width', w);
+          block.setAttribute('height', h);
+          block.setAttribute('class', 'player-block');
+          tetromino.appendChild(block);
+        });
+        tetrominoX = 450;
+        tetrominoY = 0;
+        tetrominoRotation = 0;
+        tetromino.setAttribute('transform', `translate(${tetrominoX}, ${tetrominoY}) scale(0.3)`);
+        svg.appendChild(tetromino);
+      }
+
+      // Spawn Snake Bit
+      function spawnSnakeBit() {
+        const bitId = `bit${snakeBitsGroup.children.length}`;
+        const bit = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+        bit.setAttribute('id', bitId);
+        bit.setAttribute('x', Math.round((Math.random() * 800 + 50) / 40) * 40);
+        bit.setAttribute('y', Math.round((Math.random() * 500 + 50) / 40) * 40);
+        bit.setAttribute('width', 40);
+        bit.setAttribute('height', 40);
+        bit.setAttribute('class', 'snake-bit');
+        snakeBitsGroup.appendChild(bit);
+      }
+
+      // Spawn Pillar
+      function spawnPillar() {
+        const pillarId = `pillar${pillars.children.length}`;
+        const gapY = Math.random() * 300 + 150;
+        const topPillar = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+        topPillar.setAttribute('id', `${pillarId}_top`);
+        topPillar.setAttribute('x', 900);
+        topPillar.setAttribute('y', 0);
+        topPillar.setAttribute('width', 50);
+        topPillar.setAttribute('height', gapY - 100);
+        topPillar.setAttribute('class', 'pillar');
+        pillars.appendChild(topPillar);
+        const bottomPillar = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+        bottomPillar.setAttribute('id', `${pillarId}_bottom`);
+        bottomPillar.setAttribute('x', 900);
+        bottomPillar.setAttribute('y', gapY + 100);
+        bottomPillar.setAttribute('width', 50);
+        bottomPillar.setAttribute('height', 600 - (gapY + 100));
+        bottomPillar.setAttribute('class', 'pillar');
+        pillars.appendChild(bottomPillar);
+        setTimeout(() => {
+          const top = document.getElementById(`${pillarId}_top`);
+          const bottom = document.getElementById(`${pillarId}_bottom`);
+          if (top) top.remove();
+          if (bottom) bottom.remove();
+        }, 5000);
+      }
+
+      // Fire Laser
+      function fireLaser() {
+        const laserId = `laser${lasers.children.length}`;
+        const laser = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+        laser.setAttribute('id', laserId);
+        laser.setAttribute('x', playerX - 5);
+        laser.setAttribute('y', 500);
+        laser.setAttribute('width', 10);
+        laser.setAttribute('height', 20);
+        laser.setAttribute('class', 'laser');
+        lasers.appendChild(laser);
+        setTimeout(() => laser.remove(), 1000);
+      }
+
+      // Spawn Obstacle
+      function spawnObstacle() {
+        const obstacleId = `obstacle${obstacles.children.length}`;
+        const x = Math.random() * 800 + 50;
+        const obstacle = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+        obstacle.setAttribute('id', obstacleId);
+        obstacle.setAttribute('x', x);
+        obstacle.setAttribute('y', obstacleY);
+        obstacle.setAttribute('width', 50);
+        obstacle.setAttribute('height', 30);
+        obstacle.setAttribute('class', 'obstacle');
+        obstacles.appendChild(obstacle);
+        setTimeout(() => {
+          const obs = document.getElementById(obstacleId);
+          if (obs) obs.remove();
+        }, 5000);
+      }
+
+      // Spawn Enemy
+      function spawnEnemy() {
+        const enemyId = `enemy${enemies.children.length}`;
+        const x = Math.random() * 800 + 50;
+        const enemy = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        enemy.setAttribute('id', enemyId);
+        enemy.setAttribute('cx', x);
+        enemy.setAttribute('cy', -50);
+        enemy.setAttribute('r', 15);
+        enemy.setAttribute('class', 'enemy-ship');
+        enemies.appendChild(enemy);
+        setTimeout(() => {
+          const enemyElement = document.getElementById(enemyId);
+          if (enemyElement) enemyElement.remove();
+        }, 5000);
+      }
+
+      // Level Setup
+      function startLevel(level) {
+        currentLevel = level;
+        levelText.textContent = `Level: ${level}`;
+        lives = 3;
+        livesText.textContent = `Lives: ${lives}`;
+        gameStarted = false;
+        gameOver = false;
+        startScreen.setAttribute('visibility', 'visible');
+        playerX = 450;
+        playerY = 500;
+        player.setAttribute('transform', `translate(${playerX}, ${playerY}) scale(0.3)`);
+        ball.setAttribute('visibility', 'hidden');
+        bricks.forEach(brick => brick.setAttribute('visibility', currentLevel === 1 ? 'visible' : 'hidden'));
+        hoop.setAttribute('visibility', currentLevel === 2 ? 'visible' : 'hidden');
+        referenceLine.setAttribute('visibility', 'hidden');
+        obstacles.innerHTML = '';
+        enemies.innerHTML = '';
+        lasers.innerHTML = '';
+        tetrisGrid.innerHTML = '';
+        snakeBitsGroup.innerHTML = '';
+        pillars.innerHTML = '';
+        androidBase.setAttribute('visibility', currentLevel === 1 || currentLevel === 2 ? 'visible' : 'hidden');
+        jetpack.setAttribute('visibility', currentLevel === 2 ? 'visible' : 'hidden');
+        car.setAttribute('visibility', currentLevel === 3 ? 'visible' : 'hidden');
+        spaceship.setAttribute('visibility', currentLevel === 4 ? 'visible' : 'hidden');
+        tetrominoGroup.setAttribute('visibility', currentLevel === 5 ? 'visible' : 'hidden');
+        snake.setAttribute('visibility', currentLevel === 6 ? 'visible' : 'hidden');
+        flappy.setAttribute('visibility', currentLevel === 7 ? 'visible' : 'hidden');
+        startText1.textContent = currentLevel === 3 || currentLevel === 6 ? 'Press ARROWS or SWIPE to Start' : 'Press SPACE or TAP to Start';
+        startText2.textContent = currentLevel === 3 || currentLevel === 6 ? 'Move with ARROWS or SWIPE' : 'Move with MOUSE or TOUCH';
+        hoopScore = 0;
+        enemyCount = 0;
+        linesCleared = 0;
+        snakeLength = 1;
+        snakeBits = [{ x: 450, y: 500 }];
+        pillarsPassed = 0;
+        obstacleY = 600;
+        tetromino = null;
+        playerDY = 0;
+        if (currentLevel === 3) {
+          for (let i = 0; i < 5; i++) spawnObstacle();
+        } else if (currentLevel === 6) {
+          spawnSnakeBit();
+        } else if (currentLevel === 7) {
+          playerY = 300;
+          player.setAttribute('transform', `translate(${playerX}, ${playerY}) scale(0.3)`);
+          spawnPillar();
+        }
+      }
+
+      // Game Loop
+      let lastUpdate = Date.now();
+      function gameLoop() {
+        const now = Date.now();
+        const delta = (now - lastUpdate) / 1000;
+        lastUpdate = now;
+        if (gameStarted && !gameOver) {
+          if (currentLevel === 1) {
+            ballX += ballDX;
+            ballY += ballDY;
+            if (ballX < 10 || ballX > 890) {
+              ballDX = -ballDX;
+              ballX = ballX < 10 ? 10 : 890;
+            }
+            if (ballY < 10) {
+              ballDY = -ballDY;
+              ballY = 10;
+            }
+            if (ballY > 600) {
+              lives -= 1;
+              livesText.textContent = `Lives: ${lives}`;
+              if (lives <= 0) {
+                gameOver = true;
+                gameOverScreen.setAttribute('visibility', 'visible');
+                ball.setAttribute('visibility', 'hidden');
+                startCryAnimation();
+              } else {
+                resetBall();
+              }
+            }
+            if (ballY > 480 && ballY < 490 && Math.abs(ballX - playerX) < 50) {
+              ballDY = -ballSpeed;
+              ballDX += (ballX - playerX) / 10;
+              ballY = 480;
+            }
+            bricks.forEach(brick => {
+              if (!brick.getAttribute('visibility') || brick.getAttribute('visibility') !== 'hidden') {
+                const brickX = parseFloat(brick.getAttribute('x'));
+                const brickY = parseFloat(brick.getAttribute('y'));
+                if (ballX > brickX && ballX < brickX + 80 && ballY > brickY && ballY < brickY + 30) {
+                  createExplosion(ballX, ballY);
+                  brick.setAttribute('visibility', 'hidden');
+                  score += 10;
+                  scoreText.textContent = `Score: ${score}`;
+                  ballDY = -ballDY;
+                  if (bricks.every(b => b.getAttribute('visibility') === 'hidden')) {
+                    gameOver = true;
+                    winScreen.setAttribute('visibility', 'visible');
+                    ball.setAttribute('visibility', 'hidden');
+                    startDanceAnimation();
+                  }
+                }
+              }
+            });
+            ball.setAttribute('cx', ballX);
+            ball.setAttribute('cy', ballY);
+          } else if (currentLevel === 2) {
+            if (ballDY !== 0 || ballDX !== 0) {
+              ballX += ballDX;
+              ballY += ballDY;
+              ballDY += 0.2;
+              ball.setAttribute('cx', ballX);
+              ball.setAttribute('cy', ballY);
+              const hoopCx = parseFloat(hoop.getAttribute('cx'));
+              if (Math.abs(ballX - hoopCx) < 30 && Math.abs(ballY - 100) < 30) {
+                createExplosion(ballX, ballY);
+                hoopScore += 1;
+                score += 10;
+                scoreText.textContent = `Score: ${score}`;
+                resetBall();
+                if (hoopScore >= 5) {
+                  gameOver = true;
+                  winScreen.setAttribute('visibility', 'visible');
+                  ball.setAttribute('visibility', 'hidden');
+                  startDanceAnimation();
+                }
+              } else if (ballY > 600 || ballX < 0 || ballX > 900) {
+                lives -= 1;
+                livesText.textContent = `Lives: ${lives}`;
+                if (lives <= 0) {
+                  gameOver = true;
+                  gameOverScreen.setAttribute('visibility', 'visible');
+                  ball.setAttribute('visibility', 'hidden');
+                  startCryAnimation();
+                } else {
+                  resetBall();
+                }
+              }
+            }
+          } else if (currentLevel === 3) {
+            obstacleY -= 5;
+            Array.from(obstacles.children).forEach(obs => {
+              const obsX = parseFloat(obs.getAttribute('x'));
+              const obsY = parseFloat(obs.getAttribute('y')) - 5;
+              obs.setAttribute('y', obsY);
+              if (obsY > 480 && obsY < 520 && Math.abs(obsX - playerX) < 50) {
+                lives -= 1;
+                livesText.textContent = `Lives: ${lives}`;
+                obs.remove();
+                score += 10;
+                scoreText.textContent = `Score: ${score}`;
+                if (lives <= 0) {
+                  gameOver = true;
+                  gameOverScreen.setAttribute('visibility', 'visible');
+                  startCryAnimation();
+                }
+              }
+            });
+            if (lastSwipeDirection === 'left') {
+              playerX -= 10;
+              if (playerX < 50) playerX = 50;
+              player.setAttribute('transform', `translate(${playerX}, 500) scale(0.3)`);
+            } else if (lastSwipeDirection === 'right') {
+              playerX += 10;
+              if (playerX > 850) playerX = 850;
+              player.setAttribute('transform', `translate(${playerX}, 500) scale(0.3)`);
+            }
+            if (Math.random() < 0.02) spawnObstacle();
+            if (obstacleY <= 0) {
+              gameOver = true;
+              winScreen.setAttribute('visibility', 'visible');
+              startDanceAnimation();
+            }
+          } else if (currentLevel === 4) {
+            Array.from(lasers.children).forEach(laser => {
+              const laserY = parseFloat(laser.getAttribute('y')) - 10;
+              laser.setAttribute('y', laserY);
+            });
+            Array.from(enemies.children).forEach(enemy => {
+              const enemyX = parseFloat(enemy.getAttribute('cx'));
+              const enemyY = parseFloat(enemy.getAttribute('cy')) + 5;
+              enemy.setAttribute('cy', enemyY);
+              Array.from(lasers.children).forEach(laser => {
+                const laserX = parseFloat(laser.getAttribute('x'));
+                const laserY = parseFloat(laser.getAttribute('y'));
+                if (Math.abs(laserX - enemyX) < 20 && Math.abs(laserY - enemyY) < 20) {
+                  createExplosion(enemyX, enemyY);
+                  enemy.remove();
+                  laser.remove();
+                  enemyCount += 1;
+                  score += 10;
+                  scoreText.textContent = `Score: ${score}`;
+                  if (enemyCount >= 20) {
+                    gameOver = true;
+                    winScreen.setAttribute('visibility', 'visible');
+                    startDanceAnimation();
+                  }
+                }
+              });
+              if (enemyY > 480 && Math.abs(enemyX - playerX) < 50) {
+                lives -= 1;
+                livesText.textContent = `Lives: ${lives}`;
+                enemy.remove();
+                if (lives <= 0) {
+                  gameOver = true;
+                  gameOverScreen.setAttribute('visibility', 'visible');
+                  startCryAnimation();
+                }
+              }
+            });
+            if (Math.random() < 0.02) spawnEnemy();
+          } else if (currentLevel === 5) {
+            if (tetromino) {
+              tetrominoY += 5;
+              tetromino.setAttribute('transform', `translate(${tetrominoX}, ${tetrominoY}) scale(0.3) rotate(${tetrominoRotation})`);
+              if (tetrominoY >= 560) {
+                tetromino.childNodes.forEach(block => {
+                  const bx = parseFloat(block.getAttribute('x')) * 0.3 + tetrominoX;
+                  const by = parseFloat(block.getAttribute('y')) * 0.3 + tetrominoY;
+                  const gridBlock = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                  gridBlock.setAttribute('x', Math.round(bx / 40) * 40);
+                  gridBlock.setAttribute('y', Math.round(by / 40) * 40);
+                  gridBlock.setAttribute('width', 40);
+                  gridBlock.setAttribute('height', 40);
+                  gridBlock.setAttribute('class', 'player-block');
+                  tetrisGrid.appendChild(gridBlock);
+                });
+                tetromino.remove();
+                tetromino = null;
+                const grid = Array(15).fill().map(() => Array(10).fill(0));
+                Array.from(tetrisGrid.children).forEach(block => {
+                  const bx = parseFloat(block.getAttribute('x'));
+                  const by = parseFloat(block.getAttribute('y'));
+                  grid[Math.round((by - 50) / 40)][Math.round((bx - 250) / 40)] = 1;
+                });
+                for (let row = 14; row >= 0; row--) {
+                  if (grid[row].every(cell => cell === 1)) {
+                    Array.from(tetrisGrid.children).forEach(block => {
+                      const by = parseFloat(block.getAttribute('y'));
+                      if (Math.round((by - 50) / 40) === row) block.remove();
+                      else if (by < row * 40 + 50) block.setAttribute('y', by + 40);
+                    });
+                    linesCleared += 1;
+                    score += 10;
+                    scoreText.textContent = `Score: ${score}`;
+                    if (linesCleared >= 10) {
+                      gameOver = true;
+                      winScreen.setAttribute('visibility', 'visible');
+                      startDanceAnimation();
+                    }
+                  }
+                }
+                if (grid[0].some(cell => cell === 1)) {
+                  lives -= 1;
+                  livesText.textContent = `Lives: ${lives}`;
+                  if (lives <= 0) {
+                    gameOver = true;
+                    gameOverScreen.setAttribute('visibility', 'visible');
+                    startCryAnimation();
+                  } else {
+                    spawnTetromino();
+                  }
+                } else {
+                  spawnTetromino();
+                }
+              }
+            }
+          } else if (currentLevel === 6) {
+            if (now - lastUpdate > 200) {
+              lastUpdate = now;
+              let newX = snakeBits[0].x;
+              let newY = snakeBits[0].y;
+              if (lastSwipeDirection === 'left') newX -= 40;
+              else if (lastSwipeDirection === 'right') newX += 40;
+              else if (lastSwipeDirection === 'up') newY -= 40;
+              else if (lastSwipeDirection === 'down') newY += 40;
+              else newX += 40;
+              if (newX < 50) newX = 50;
+              if (newX > 850) newX = 850;
+              if (newY < 50) newY = 50;
+              if (newY > 550) newY = 550;
+              snakeBits.unshift({ x: newX, y: newY });
+              if (snakeBits.length > snakeLength) snakeBits.pop();
+              snake.setAttribute('transform', `translate(${newX}, ${newY}) scale(0.3)`);
+              Array.from(snakeBitsGroup.children).forEach(bit => {
+                const bitX = parseFloat(bit.getAttribute('x'));
+                const bitY = parseFloat(bit.getAttribute('y'));
+                if (Math.abs(newX - bitX) < 20 && Math.abs(newY - bitY) < 20) {
+                  bit.remove();
+                  snakeLength += 1;
+                  score += 10;
+                  scoreText.textContent = `Score: ${score}`;
+                  spawnSnakeBit();
+                  if (snakeLength >= 20) {
+                    gameOver = true;
+                    winScreen.setAttribute('visibility', 'visible');
+                    startDanceAnimation();
+                  }
+                }
+              });
+              if (snakeBits.slice(1).some(segment => Math.abs(segment.x - newX) < 20 && Math.abs(segment.y - newY) < 20)) {
+                lives -= 1;
+                livesText.textContent = `Lives: ${lives}`;
+                if (lives <= 0) {
+                  gameOver = true;
+                  gameOverScreen.setAttribute('visibility', 'visible');
+                  startCryAnimation();
+                } else {
+                  snakeBits = [{ x: 450, y: 500 }];
+                  snakeLength = 1;
+                  snake.setAttribute('transform', `translate(450, 500) scale(0.3)`);
+                  snakeBitsGroup.innerHTML = '';
+                  spawnSnakeBit();
+                }
+              }
+            }
+          } else if (currentLevel === 7) {
+            playerDY += 0.5;
+            playerY += playerDY;
+            if (playerY < 50) playerY = 50;
+            if (playerY > 550) {
+              lives -= 1;
+              livesText.textContent = `Lives: ${lives}`;
+              if (lives <= 0) {
+                gameOver = true;
+                gameOverScreen.setAttribute('visibility', 'visible');
+                startCryAnimation();
+              } else {
+                playerY = 300;
+                playerDY = 0;
+                pillars.innerHTML = '';
+                spawnPillar();
+              }
+            }
+            player.setAttribute('transform', `translate(${playerX}, ${playerY}) scale(0.3)`);
+            Array.from(pillars.children).forEach(pillar => {
+              const pillarX = parseFloat(pillar.getAttribute('x')) - 5;
+              pillar.setAttribute('x', pillarX);
+              const pillarY = parseFloat(pillar.getAttribute('y'));
+              const height = parseFloat(pillar.getAttribute('height'));
+              if (pillarX < playerX && pillarX > playerX - 50 && (playerY < pillarY + height || playerY > pillarY + height + 100)) {
+                lives -= 1;
+                livesText.textContent = `Lives: ${lives}`;
+                if (lives <= 0) {
+                  gameOver = true;
+                  gameOverScreen.setAttribute('visibility', 'visible');
+                  startCryAnimation();
+                } else {
+                  playerY = 300;
+                  playerDY = 0;
+                  pillars.innerHTML = '';
+                  spawnPillar();
+                }
+              } else if (pillarX < 400 && pillarX > 350 && pillar.id.endsWith('_top')) {
+                pillarsPassed += 1;
+                score += 10;
+                scoreText.textContent = `Score: ${score}`;
+                if (pillarsPassed >= 10) {
+                  gameOver = true;
+                  winScreen.setAttribute('visibility', 'visible');
+                  startDanceAnimation();
+                }
+              }
+            });
+            if (Math.random() < 0.02) spawnPillar();
+          }
+        }
+        requestAnimationFrame(gameLoop);
+      }
+
+      // Restart Game
+      function restartGame() {
+        score = 0;
+        lives = 3;
+        currentLevel = 1;
+        gameOver = false;
+        gameStarted = false;
+        scoreText.textContent = `Score: ${score}`;
+        livesText.textContent = `Lives: ${lives}`;
+        levelText.textContent = `Level: ${currentLevel}`;
+        gameOverScreen.setAttribute('visibility', 'hidden');
+        winScreen.setAttribute('visibility', 'hidden');
+        startScreen.setAttribute('visibility', 'visible');
+        bricks.forEach(brick => brick.setAttribute('visibility', 'visible'));
+        resetBall();
+        obstacles.innerHTML = '';
+        enemies.innerHTML = '';
+        lasers.innerHTML = '';
+        tetrisGrid.innerHTML = '';
+        snakeBitsGroup.innerHTML = '';
+        pillars.innerHTML = '';
+        playerX = 450;
+        playerY = 500;
+        hoopScore = 0;
+        enemyCount = 0;
+        linesCleared = 0;
+        snakeLength = 1;
+        pillarsPassed = 0;
+        tetromino = null;
+        snakeBits = [{ x: 450, y: 500 }];
+        lastSwipeDirection = null;
+        startLevel(1);
+      }
+
+      // Event Listeners
+      restartButton.addEventListener('click', restartGame);
+      restartButton.addEventListener('touchstart', restartGame, { passive: false });
+      nextLevelButton.addEventListener('click', () => {
+        winScreen.setAttribute('visibility', 'hidden');
+        const nextLevel = currentLevel < 7 ? currentLevel + 1 : 1;
+        showLevelTransition(nextLevel);
+      });
+      nextLevelButton.addEventListener('touchstart', () => {
+        winScreen.setAttribute('visibility', 'hidden');
+        const nextLevel = currentLevel < 7 ? currentLevel + 1 : 1;
+        showLevelTransition(nextLevel);
+      }, { passive: false });
+
+      // Start Game Loop
+      gameLoop();
+    ]]>
+  </script>
+</svg>
